@@ -37,12 +37,15 @@ export class FileUploadComponent {
   formSubmit() {
     this.formData.append('imageTitle', this.imageTitle);
     this.formData.append('imageComment', this.imageComment);
+
+    const upload$ = this.fetchApiData.upload(this.formData);
+    upload$.subscribe();
+
     this.fileName = '';
     this.imageTitle = '';
     this.imageComment = '';
-
-    const upload$ = this.fetchApiData.upload(this.formData);
-
-    upload$.subscribe();
+    this.formData.delete('myFile');
+    this.formData.delete('imageTitle');
+    this.formData.delete('imageComment');
   }
 }
