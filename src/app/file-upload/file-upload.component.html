@@ -1,0 +1,39 @@
+<!-- file-upload.component.html -->
+<form class="upload-form">
+	<input #fileUpload
+		(change)="onFileSelected($event)"
+		type="file"
+		class="file-input"
+		requiredFileType="image/png image/jpg image/jpeg image/gif image/webp">
+
+	<div class="file-upload">
+		<span class="input-label">
+			<button (click)="fileUpload.click()"
+				color="primary"
+				class="upload-btn">
+				Select File
+			</button>
+		</span>
+		<span class="input-label">
+			{{ fileName || "No file uploaded yet." }}
+		</span>
+
+		<span class="input-label">Title:</span>
+		<input [(ngModel)]="imageTitle"
+			[ngModelOptions]="{ standalone: true }"
+			type="text"
+			required>
+
+		<span class="input-label">Comment:</span>
+		<textarea [(ngModel)]="imageComment"
+			[ngModelOptions]="{ standalone: true }"
+			type="text"
+			class="comment-field"></textarea>
+
+		<button (click)="formSubmit()"
+			class="submit-button"
+			color="primary">
+			Submit
+		</button>
+	</div>
+</form>

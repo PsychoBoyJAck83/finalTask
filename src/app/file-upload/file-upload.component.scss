@@ -1,0 +1,32 @@
+.file-input {
+    display: none;
+}
+
+.file-upload {
+    display: inline-grid;
+    grid-template-columns: 100px 400px;
+    column-gap: 10px;
+    row-gap: 10px;
+    margin-bottom: 20px;
+    border: 1px solid grey;
+    border-radius: 3PX;
+    padding: 10px;
+    
+}
+
+.submit-button {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    width: 75px;
+    justify-self: end;
+}
+
+.upload-button {
+    width: 75px
+}
+
+.comment-field{
+    height: 50px;
+    text-align: start;
+    line-height: 1; 
+}
