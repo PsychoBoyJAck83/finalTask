@@ -28,7 +28,6 @@ export class FileUploadComponent {
 
       if (file) {
         this.fileName = file.name;
-
         this.formData.append('myFile', file);
       }
     }
