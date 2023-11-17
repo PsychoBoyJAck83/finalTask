@@ -6,9 +6,11 @@
 				{{entry.imageTitle}}
 			</mat-card-title>
 		</mat-card-header>
-		<img src="http://localhost:3000/open/original-images/{{entry.imageFileName}}"
-			class="mat-card-image">
-		<mat-card-content>
+		<a href="http://localhost:3000/open/original-images/{{ entry.imageFileName }}">
+			<img src="http://localhost:3000/open/resized-images/{{entry.imageFileName}}"
+				class="mat-card-image">
+		</a>
+		<mat-card-content class="mat-card-content">
 			{{entry.imageComment}}
 		</mat-card-content>
 	</mat-card>
