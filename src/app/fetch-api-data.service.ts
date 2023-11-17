@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import {
   HttpClient,
   HttpHeaders,
   HttpErrorResponse,
   HttpParams,
 } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError, Subject } from 'rxjs';
 
 const apiUrl = 'http://localhost:3000/';
 
@@ -16,6 +15,12 @@ const apiUrl = 'http://localhost:3000/';
 })
 export class FetchApiDataService {
   constructor(private http: HttpClient) {}
+
+  private _refreshNeeded$ = new Subject<void>();
+
+  get refreshNeeded$() {
+    return this._refreshNeeded$;
+  }
 
   public listObjects(): Observable<any> {
     return this.http
@@ -26,6 +31,11 @@ export class FetchApiDataService {
   public upload(formData: FormData): Observable<any> {
     return this.http
       .post(apiUrl + 'upload', formData)
+      .pipe(
+        tap(() => {
+          this._refreshNeeded$.next();
+        })
+      )
       .pipe(catchError(this.handleError));
   }
 
