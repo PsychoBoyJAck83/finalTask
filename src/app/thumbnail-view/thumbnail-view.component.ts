@@ -12,10 +12,14 @@ export class ThumbnailViewComponent implements OnInit {
   constructor(public fetchApiData: FetchApiDataService) {}
 
   ngOnInit(): void {
+    this.loadAllImageEntries();
     this.fetchApiData.refreshNeeded$.subscribe(() => {
-      this.fetchApiData.getAll().subscribe((resp: any) => {
-        this.allImageEntries = resp;
-      });
+      this.loadAllImageEntries();
+    });
+  }
+  private loadAllImageEntries(): void {
+    this.fetchApiData.getAll().subscribe((resp: any) => {
+      this.allImageEntries = resp;
     });
   }
 }
