@@ -1,2 +1,15 @@
-<!-- <img src="http://localhost:3000/open/original-images/654321.png"> -->
-<div>TEst</div>
+<div class="mat-card-container">
+	<mat-card *ngFor="let entry of allImageEntries;"
+		class="mat-card">
+		<mat-card-header class="custom-card-header">
+			<mat-card-title>
+				{{entry.imageTitle}}
+			</mat-card-title>
+		</mat-card-header>
+		<img src="http://localhost:3000/open/original-images/{{entry.imageFileName}}"
+			class="mat-card-image">
+		<mat-card-content>
+			{{entry.imageComment}}
+		</mat-card-content>
+	</mat-card>
+</div>

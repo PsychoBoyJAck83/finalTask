@@ -29,6 +29,10 @@ export class FetchApiDataService {
       .pipe(catchError(this.handleError));
   }
 
+  public getAll(): Observable<any> {
+    return this.http.get(apiUrl + 'getAll').pipe(catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
       console.error('Some error occurred:', error.error.message);
