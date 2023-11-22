@@ -8,7 +8,8 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError, Subject } from 'rxjs';
 
-const apiUrl = 'http://localhost:3000/';
+//const apiUrl = 'http://localhost:3000/';
+const apiUrl = 'http://26-alb-593388902.eu-central-1.elb.amazonaws.com/';
 
 @Injectable({
   providedIn: 'root',
