@@ -40,8 +40,18 @@ export class FetchApiDataService {
       .pipe(catchError(this.handleError));
   }
 
+  public getResizedImages(): Observable<any> {
+    return this.http
+      .get(apiUrl + 'listobjects/resizedImages')
+      .pipe(catchError(this.handleError));
+  }
+
   public getAll(): Observable<any> {
     return this.http.get(apiUrl + 'getAll').pipe(catchError(this.handleError));
+  }
+
+  public returnUrl(): any {
+    return apiUrl;
   }
 
   private handleError(error: HttpErrorResponse): any {
