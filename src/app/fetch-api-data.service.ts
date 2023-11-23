@@ -42,7 +42,7 @@ export class FetchApiDataService {
 
   public getResizedImages(): Observable<any> {
     return this.http
-      .get(apiUrl + 'listobjects/resizedImages')
+      .get(apiUrl + 'listobjects/resized-images')
       .pipe(catchError(this.handleError));
   }
 

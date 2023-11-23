@@ -7,8 +7,10 @@
 			</mat-card-title>
 		</mat-card-header>
 		<a href="{{baseUrl}}open/original-images/{{entry.imageFileName}}">
-			<img src="{{baseUrl}}open/resized-images/{{entry.imageFileName}}"
-				class="mat-card-image">
+			<img (error)="handleImgError($event, entry)"
+				(load)="handleImgLoad($event)"
+				src="{{baseUrl}}open/resized-images/{{entry.imageFileName}}"
+				class="mat-card-image invisible">
 		</a>
 		<mat-card-content class="mat-card-content">
 			{{entry.imageComment}}
